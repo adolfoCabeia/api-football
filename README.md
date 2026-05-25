@@ -1,57 +1,56 @@
-# ⚽ Football Live Dashboard
+# Football Live Dashboard
 
-Uma plataforma full-stack de resultados de futebol em tempo real inspirada em aplicações como o Sofascore.
+Uma plataforma **full-stack de resultados de futebol em tempo real**, inspirada em aplicações como Sofascore, construída com foco em **arquitetura limpa**, **performance**, **escalabilidade** e **experiência moderna do utilizador**.
 
-Desenvolvida com Node.js, Express, TypeScript e Next.js, consumindo dados em tempo real através da API da RapidAPI.
-
-O projeto foca-se em arquitetura limpa, performance e experiência de utilizador moderna, simulando uma aplicação real de produto.
+A aplicação consome dados em tempo real através da **RapidAPI Football API** e entrega uma experiência semelhante a um produto real de mercado.
 
 ---
 
-## Demonstração
+# Demonstração
 
-> Adicionar link do deploy aqui (Render / Vercel)
-
-- Backend API: https://seu-backend.onrender.com
-- Frontend: https://seu-frontend.vercel.app
-
----
-
-## Pré-visualização
-
-> Adicionar screenshots ou GIFs aqui
-
-- Dashboard de jogos ao vivo
-- Página de detalhes da partida
-- Slider de notícias
-- Sidebar de transferências
+### Produção
+- **Backend API:** `https://api-football-6t3o.onrender.com/api/docs/`
+- **Frontend:** `https://seu-frontend.vercel.app`
 
 ---
 
-## Objetivo do Projeto
+### Funcionalidades visuais
+ Dashboard de jogos ao vivo  
+ Página de detalhes da partida  
+ Slider de notícias  
+ Sidebar de transferências  
+ Interface responsiva  
+ Atualização em tempo real  
 
-Este projeto simula uma plataforma real de dados desportivos com foco em:
+---
+
+# Objetivo do Projeto
+
+Este projeto foi desenvolvido para simular uma aplicação real de dados desportivos com foco em:
 
 - Consumo de dados em tempo real
-- Arquitetura escalável no backend
+- Integração com APIs externas
+- Arquitetura escalável
 - Separação de responsabilidades
-- Interface responsiva e moderna
-- Boas práticas de integração com APIs externas
+- Performance e boas práticas
+- Interface moderna e responsiva
 
 ---
 
-## Stack Tecnológica
+# Stack Tecnológica
 
-### Backend
+## Backend
 - Node.js
 - Express.js
 - TypeScript
 - Axios
+- Swagger
 - Dotenv
-- Swagger (documentação da API)
 - CORS
 
-### Frontend
+---
+
+## Frontend
 - Next.js
 - React
 - TypeScript
@@ -60,101 +59,109 @@ Este projeto simula uma plataforma real de dados desportivos com foco em:
 
 ---
 
-## Arquitetura
+# Arquitetura do Sistema
 
-O sistema segue uma arquitetura simples, mas profissional:
-
+```text
 Frontend (Next.js)
-↓
+        ↓
 Backend API (Node.js + Express)
-↓
-API de Futebol (RapidAPI)
+        ↓
+RapidAPI Football API
 
+O backend atua como uma camada intermediária, abstraindo a complexidade da API externa e expondo endpoints limpos para o frontend.
 
-O backend funciona como uma camada intermédia, abstraindo a complexidade da API externa e fornecendo endpoints organizados para o frontend.
+Estrutura do Projeto
 
----
-
-## Funcionalidades da API
-
-### Jogos
-- Jogos ao vivo
-- Jogos por data
-- Detalhes da partida
-- Estatísticas do jogo
-
-### Ligas
-- Lista de ligas disponíveis
-
-### Notícias
-- Notícias e tendências do futebol
-
-### Transferências
-- Transferências recentes de jogadores
-
----
-
-## Estrutura do Backend
-
-O backend funciona como uma camada intermédia, abstraindo a complexidade da API externa e fornecendo endpoints organizados para o frontend.
-
----
-
+Backend:
 src/
 ├── config/
-│ └── rapidapi.ts
+│   └── rapidApi.ts
+│
 ├── controllers/
-│ └── football.controller.ts
+│   └── football.controller.ts
+│
 ├── services/
-│ └── football.service.ts
+│   └── football.service.ts
+│
 ├── routes/
-│ └── football.routes.ts
+│   └── football.routes.ts
+│
+├── utils/
+│   └── appError.ts
+│
 ├── app.ts
 └── server.ts
 
 
+Funcionalidades da API
+    Jogos
+    Listar jogos ao vivo
+    Buscar jogos por data
+    Detalhes da partida
+    Estatísticas completas
+
+Ligas:
+    Listagem de ligas disponíveis
+
+Notícias:
+    Notícias e tendências do futebol
+
+Transferências:
+    Transferências recentes de jogadores
+
+Equipas
+    Obter logo/escudo do clube
+
 Funcionalidades Principais
+    Jogos de futebol em tempo real
+    Estatísticas detalhadas
+    Notícias em destaque
+    Transferências de jogadores
+    Jogos por data
+    Interface responsiva
+    Atualização automática dos dados (polling)
 
-Jogos de futebol ao vivo
-Estatísticas de partidas
-Notícias em destaque
-Transferências de jogadores
-Jogos por dataInterface totalmente responsiva
-Atualização de dados em tempo real (polling)
 Destaques Técnicos
-Separação clara entre controller e service
-Camada de abstração para consumo da API externa
-Arquitetura modular e escalável
-Componentização no frontend
-Integração limpa com API externa
-Documentação com Swagger
-Documentação da API (Swagger)
+    Arquitetura modular
+    Separação clara entre Controller e Service
+    Tratamento centralizado de erros
+    Integração limpa com API externa
+    Código escalável e de fácil manutenção
+    Documentação automática com Swagger
+    Padrões profissionais de backend
 
-Após iniciar o backend:
+Documentação da API
 
-http://localhost:3001/api/docs
-Instalação
-1. Clonar o repositório
-git clone https://github.com/seu-usuario/football-dashboard.git
-2. Backend
-cd backend
-npm install
-npm run dev
-3. Frontend
-cd frontend
-npm install
-npm run dev
+    Após iniciar o backend:
+        http://localhost:3001/api/docs
+            Interface gerada com Swagger.
+Instalação Local
+
+Clonar o repositório
+
+git clone https://github.com/adolfoCabeia/api-football.git
+
+Instalar o Backend
+    cd backend
+    npm install
+    npm run dev
+
 Variáveis de Ambiente
+    Criar o ficheiro .env:
+    PORT=3001
+    RAPIDAPI_KEY=sua_api_key
+    RAPIDAPI_HOST=free-api-live-football-data.p.rapidapi.com
 
-Criar ficheiro .env no backend:
 
-PORT=3001
-RAPIDAPI_KEY=sua_api_key
-RAPIDAPI_HOST=free-api-live-football-data.p.rapidapi.com
-Deploy
-Backend (Render)
-Serviço Node.js
-Start command: npm start
-Frontend (Vercel)
-Deploy Next.js
-Conectado à API backend
+Melhorias Futuras
+    autenticação de utilizadores
+    favoritos
+    notificações em tempo real via WebSocket
+    filtros avançados
+    modo escuro
+    suporte multilíngue
+
+
+Autor
+Adolfo Cabeia
+Full Stack Developer | Node.js | React | TypeScript
