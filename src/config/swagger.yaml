@@ -1,0 +1,133 @@
+openapi: 3.0.0
+
+info:
+  title: Football Live Data API
+  description: >
+    API backend para aplicação tipo Sofascore, consumindo dados de futebol em tempo real,
+    incluindo jogos ao vivo, estatísticas, notícias e transferências.
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:8000
+    description: Local server
+
+tags:
+  - name: Matches
+    description: Endpoints relacionados a jogos de futebol
+  - name: Leagues
+    description: Dados de ligas e competições
+  - name: News
+    description: Notícias de futebol
+  - name: Transfers
+    description: Transferências de jogadores
+
+paths:
+
+  /api/football/live:
+    get:
+      tags:
+        - Matches
+      summary: Get live football matches
+      description: Retorna todos os jogos que estão a decorrer em tempo real.
+      responses:
+        200:
+          description: Lista de jogos ao vivo retornada com sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    type: array
+                    items:
+                      type: object
+
+  /api/football/matches:
+    get:
+      tags:
+        - Matches
+      summary: Get matches by date
+      description: Retorna jogos de uma data específica.
+      parameters:
+        - in: query
+          name: date
+          required: true
+          schema:
+            type: string
+          example: "2024-11-07"
+      responses:
+        200:
+          description: Jogos retornados com sucesso
+
+  /api/football/match/{id}:
+    get:
+      tags:
+        - Matches
+      summary: Get match details
+      description: Retorna detalhes completos de uma partida específica.
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+          description: ID do evento/jogo
+      responses:
+        200:
+          description: Detalhes do jogo retornados com sucesso
+
+  /api/football/match/{id}/stats:
+    get:
+      tags:
+        - Matches
+      summary: Get match statistics
+      description: Retorna estatísticas completas de um jogo (posse, chutes, etc).
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Estatísticas retornadas com sucesso
+
+  /api/football/leagues:
+    get:
+      tags:
+        - Leagues
+      summary: Get all leagues
+      description: Retorna todas as ligas disponíveis na API.
+
+      responses:
+        200:
+          description: Lista de ligas retornada com sucesso
+
+  /api/football/news:
+    get:
+      tags:
+        - News
+      summary: Get trending football news
+      description: Retorna notícias populares e tendências do futebol.
+      responses:
+        200:
+          description: Notícias retornadas com sucesso
+
+  /api/football/transfers:
+    get:
+      tags:
+        - Transfers
+      summary: Get player transfers
+      description: Retorna lista de transferências de jogadores.
+      parameters:
+        - in: query
+          name: page
+          required: false
+          schema:
+            type: integer
+          example: 1
+      responses:
+        200:
+          description: Transferências retornadas com sucesso
