@@ -13,7 +13,7 @@ A aplicação consome dados em tempo real através da **RapidAPI Football API** 
 - **Frontend:** `https://seu-frontend.vercel.app`
 
 ---
-
+git 
 ### Funcionalidades visuais
  Dashboard de jogos ao vivo  
  Página de detalhes da partida  
